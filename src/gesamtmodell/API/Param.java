@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gesamtmodell;
+package gesamtmodell.API;
+
+import de.tmahr.ods.signal.model.Typ;
+import java.io.Serializable;
 
 /**
  *
  * @author dyeske61283
  */
-public class Algo {
-    
+public interface Param extends Serializable {
+   int getBits();
+   String getName();
+   Type getType();
 }
