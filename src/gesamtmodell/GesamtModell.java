@@ -128,15 +128,18 @@ public class GesamtModell {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String outputFileName= "ownModell";
+        String outputFileName= "U:/MahrAutomatisierung/GesamtModell/Wetterstation/ownModell.ser";
         
         //input Files (all serialised)
-        String eapModelFileName="";
-        String[] signalFileNames = {"", "", ""};
+        String eapModelFileName="U:/MahrAutomatisierung/GesamtModell/Wetterstation/Wetterstation.eap.ser";
+        String[] signalFileNames = {"U:/MahrAutomatisierung/GesamtModell/Wetterstation/S1.ods",
+            "U:/MahrAutomatisierung/GesamtModell/Wetterstation/S2.ods",
+            "U:/MahrAutomatisierung/GesamtModell/Wetterstation/S1.ods"};
         List<de.tmahr.ods.signal.model.Signal> odsSignals = new ArrayList<>();
-        
+        int i = 1;
         for (String fileName : signalFileNames){
-            odsSignals.add(de.tmahr.ods.signal.extractor.OdsExtractor.deserialisiereSignal(fileName));
+            odsSignals.add(de.tmahr.ods.signal.extractor.OdsImportApi.signalAuslesen("S" + i , fileName));
+            i++;
         }
         
         de.tmahr.eap.model.Modell eapModel = null;
@@ -144,10 +147,13 @@ public class GesamtModell {
         try (FileInputStream fis = new FileInputStream(eapModelFileName);
                 ObjectInputStream ois = new ObjectInputStream(fis))
         {
+            System.out.println("You won");
             eapModel = (de.tmahr.eap.model.Modell) ois.readObject();
+            System.out.println("You really lost");
         }
         catch (IOException | ClassNotFoundException e)
         {
+            System.out.println("Exception " + e.getMessage());
             StringWriter sw = new StringWriter();
             e.printStackTrace(new PrintWriter(sw));
         }
