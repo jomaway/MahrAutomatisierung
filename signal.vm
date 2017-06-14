@@ -1,13 +1,13 @@
 #set($SignalInput = $Algo.getInput())
 
-Struct $SignalInput.getName() {
+struct $SignalInput.getName() {
 	#foreach ($element in $SignalInput.getParams())	
 	#if($element.getTyp().istKonstant)const  #end#if($element.getTyp().isthatVorzeichen)S#elseU#end#if($element.getTyp().istGanzzahl)INT #end#elseFLOAT#end$element.getBits() $element.getName();
 	#end
 	};
 
 #set($SignalOutput = $Algo.getOutput())
-Struct $SignalOutput.getName() {
+struct $SignalOutput.getName() {
 	#foreach ($element in $SignalOutput.getParams())	
 	#if($element.getTyp().istKonstant)const  #end#if($element.getTyp().isthatVorzeichen)S#elseU#end#if($element.getTyp().istGanzzahl)INT #end#elseFLOAT#end$element.getBits() $element.getName();
 	#end
