@@ -6,7 +6,7 @@ Struct $SignalInput.getName() {
 	#end
 	};
 
-#set($SignalInput = $Algo.getOutput())
+#set($SignalOutput = $Algo.getOutput())
 Struct $SignalInput.getName() {
 	#foreach ($element in $SignalInput.getParams())	
 	#if($element.getTyp().istKonstant)const  #end#if($element.getTyp().isthatVorzeichen)S#elseU#end#if($element.getTyp().istGanzzahl)INT #end#elseFLOAT#end$element.getBits() $element.getName();
