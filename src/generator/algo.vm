@@ -1,0 +1,6 @@
+#include "signal.h"
+
+void $Algo.getName()_process ($SignalInput.getName()* s1, $SignalOutput.getName()* s2)
+{
+    
+}

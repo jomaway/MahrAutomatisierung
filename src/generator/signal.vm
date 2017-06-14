@@ -1,0 +1,15 @@
+#set($SignalInput = $Algo.getInput())
+
+Struct $SignalInput.getName() {
+	#foreach ($element in $SignalInput.getParams())	
+	#if($element.getType().istKonstant)const  #end#if($element.getType().isthatVorzeichen)S#elseU#end#if($element.getType().istGanzzahl)INT #end#elseFLOAT#end$element.getBits() $element.getName();
+	#end
+	};
+
+#set($SignalInput = $Algo.getOutput())
+Struct $SignalInput.getName() {
+	#foreach ($element in $SignalInput.getParams())	
+	#if($element.getType().istKonstant)const  #end#if($element.getType().isthatVorzeichen)S#elseU#end#if($element.getType().istGanzzahl)INT #end#elseFLOAT#end$element.getBits() $element.getName();
+	#end
+	};
+  
